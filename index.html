@@ -3,56 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metric Converter</title>
+    <title>Unit Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-black-700">
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold text-center text-white mb-6 ">Metric Converter</h1>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <div class="mb-4 justify-center items-center">
-                <label for="inputValue" class="block text-gray-300 mb-2">Enter value:</label>
-                <input type="number" id="inputValue" class="w-full p-2 rounded border border-gray-600 bg-gray-700 text-white" placeholder="Enter a number">
-            </div>
-            <div class="mb-4">
-                <label for="inputUnit" class="block text-gray-300 mb-2">From unit:</label>
-                <select id="inputUnit" class="w-full p-2 rounded border border-gray-600 bg-gray-700 text-white">
-                    <option id="inputSelectUnit" value="">Select unit</option>
-                    <option id="inputPounds" value="pounds">Pounds</option>
-                    <option id="inputCelsius" value="celsius">Celsius</option>
-                    <option id="inputFahrenheit" value="fahrenheit">Fahrenheit</option>
-                    <option id="inputKilograms" value="kilograms">Kilograms</option>
-                    <option id="inputGrams" value="grams">Grams</option>
-                    <option id="inputMeters" value="meters">Meters</option>
-                    <option id="inputKilometers" value="kilometers">Kilometers</option>
-                    <option id="inputFeet" value="feet">Feet</option>
-                    <option id="inputInches" value="inches">Inches</option>
-                </select>
-            </div>
-            <div class="mb-4">
-                <label for="outputUnit" class="block text-gray-300 mb-2">To unit:</label>
-                <select id="outputUnit" class="w-full p-2 rounded border border-gray-600 bg-gray-700 text-white">
-                    <option id="outputSelectUnit" value="">Select unit</option>
-                    <option id="outputMeters" value="meters">Meters</option>
-                    <option id="outputKilometers" value="kilometers">Kilometers</option>
-                    <option id="outputFeet" value="feet">Feet</option>
-                    <option id="outputInches" value="inches">Inches</option>
-                    <option id="outputPounds" value="pounds">Pounds</option>
-                    <option id="outputCelsius" value="celsius">Celsius</option>
-                    <option id="outputFahrenheit" value="fahrenheit">Fahrenheit</option>
-                    <option id="outputKilograms" value="kilograms">Kilograms</option>
-                    <option id="outputGrams" value="grams">Grams</option>
-                </select>
-            </div>
-            <button id="convertButton" type="button" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Convert</button>
-            <div id="result" class="mt-6 text-center text-white text-lg font-semibold"></div>
-            <div class="mb-4">
-                <button id="clearButton" type="button" class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">Clear</button>    
-            </div>
 
+<body class="bg-gray-900 text-white">
+
+    <!-- NAVBAR -->
+    <nav class="bg-gray-800 p-4 flex gap-6 text-lg font-semibold">
+        <button class="tab-btn" data-tab="weight">Weight</button>
+        <button class="tab-btn" data-tab="distance">Distance</button>
+        <button class="tab-btn" data-tab="temperature">Temperature</button>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="p-6">
+
+        <!-- WEIGHT TAB -->
+        <div class="tab" id="weight">
+            <h2 class="text-2xl mb-4">Weight Converter</h2>
+
+            <div data-form class="space-y-4 bg-gray-800 p-4 rounded">
+
+                <input data-input type="text" class="w-full p-2 bg-gray-700 rounded" placeholder="Enter value or list (e.g., 10, 20, 30)">
+
+                <select data-from class="w-full p-2 bg-gray-700 rounded">
+                    <option value="">From unit</option>
+                    <option value="pounds">Pounds</option>
+                    <option value="kilograms">Kilograms</option>
+                </select>
+
+                <select data-to class="w-full p-2 bg-gray-700 rounded">
+                    <option value="">To unit</option>
+                    <option value="pounds">Pounds</option>
+                    <option value="kilograms">Kilograms</option>
+                </select>
+
+                <button data-convert class="w-full bg-blue-600 p-2 rounded">Convert</button>
+                <button data-clear class="w-full bg-red-600 p-2 rounded">Clear</button>
+
+                <div data-result class="text-xl font-bold mt-4"></div>
+            </div>
         </div>
+
+        <!-- DISTANCE TAB -->
+        <div class="tab hidden" id="distance">
+            <h2 class="text-2xl mb-4">Distance Converter</h2>
+
+            <div data-form class="space-y-4 bg-gray-800 p-4 rounded">
+
+                <input data-input type="text" class="w-full p-2 bg-gray-700 rounded" placeholder="Enter value or list">
+
+                <select data-from class="w-full p-2 bg-gray-700 rounded">
+                    <option value="">From unit</option>
+                    <option value="miles">Miles</option>
+                    <option value="kilometres">Kilometres</option>
+                </select>
+
+                <select data-to class="w-full p-2 bg-gray-700 rounded">
+                    <option value="">To unit</option>
+                    <option value="miles">Miles</option>
+                    <option value="kilometres">Kilometres</option>
+                </select>
+
+                <button data-convert class="w-full bg-blue-600 p-2 rounded">Convert</button>
+                <button data-clear class="w-full bg-red-600 p-2 rounded">Clear</button>
+
+                <div data-result class="text-xl font-bold mt-4"></div>
+            </div>
+        </div>
+
+        <!-- TEMPERATURE TAB -->
+        <div class="tab hidden" id="temperature">
+            <h2 class="text-2xl mb-4">Temperature Converter</h2>
+
+            <div data-form class="space-y-4 bg-gray-800 p-4 rounded">
+
+                <input data-input type="text" class="w-full p-2 bg-gray-700 rounded" placeholder="Enter value or list">
+
+                <select data-from class="w-full p-2 bg-gray-700 rounded">
+                    <option value="">From unit</option>
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                </select>
+
+                <select data-to class="w-full p-2 bg-gray-700 rounded">
+                    <option value="">To unit</option>
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                </select>
+
+                <button data-convert class="w-full bg-blue-600 p-2 rounded">Convert</button>
+                <button data-clear class="w-full bg-red-600 p-2 rounded">Clear</button>
+
+                <div data-result class="text-xl font-bold mt-4"></div>
+            </div>
+        </div>
+
     </div>
 
-    <script src="mertic.js"></script>
+    <script type="module" src="js/app.js"></script>
+
+    <script>
+        // Tab switching
+        const buttons = document.querySelectorAll(".tab-btn");
+        const tabs = document.querySelectorAll(".tab");
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                tabs.forEach(t => t.classList.add("hidden"));
+                document.getElementById(btn.dataset.tab).classList.remove("hidden");
+            });
+        });
+    </script>
+
 </body>
 </html>
